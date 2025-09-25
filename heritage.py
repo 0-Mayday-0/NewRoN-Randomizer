@@ -61,9 +61,7 @@ class Secondary(Gun):
             print(i)
 
 def main():
-    ar = Primary("AR-16")
-
-    ar.pretty_print_attachments()
+    raise NotImplementedError
 
 if __name__ == '__main__':
     main()
