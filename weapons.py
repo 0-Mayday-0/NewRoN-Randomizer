@@ -1,8 +1,15 @@
 from heritage import *
 from abstracts import *
+from random import choice
+
 
 
 ###########OPTICS###########
+
+# noinspection PyPep8Naming
+class No_Optic(Optic):
+    def __init__(self):
+        super().__init__(name="None")
 
 class SRS(Optic):
     def __init__(self, name = "SRS"):
@@ -44,6 +51,11 @@ class Atak_R_1_12x(Optic):
 ##########!OPTICS##################
 
 ##########MUZZLES##################
+
+# noinspection PyPep8Naming
+class No_Muzzle(Muzzle):
+    def __init__(self):
+        super().__init__(name="None")
 
 # noinspection PyPep8Naming
 class Spread_Choke(Muzzle):
@@ -103,6 +115,11 @@ class Large_Suppressor(Muzzle):
 
 
 ##########OVERBARREL##################
+
+# noinspection PyPep8Naming
+class No_Overbarrel(Overbarrel):
+    def __init__(self):
+        super().__init__(name="None")
 
 # noinspection PyPep8Naming
 class Integrated_Flashlight(Overbarrel):
@@ -188,10 +205,24 @@ class Shotgun(Primary):
     def __init__(self, name):
         super().__init__(name)
 
-        self.optic: list[Optic] = [SRO_Dot(),
-                                   RMR_Dot()]
+        self.optic: list[Optic] = [No_Optic(),
+                                   SRO_Dot(),
+                                   RMR_Dot(),
+                                   Microt2()]
+
+        self.muzzle: list[Muzzle] = [No_Muzzle(),
+                                     GA12_Brake(),
+                                     Spread_Choke()]
+
+        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
+                                             M600V_Flashlight(),
+                                             Laser_Pointer()]
 
     def random_attachments(self) -> list[Attachment]:
-        raise NotImplementedError
+        pack: list[list[Attachment]] = [self.optic,
+                                        self.muzzle,
+                                        self.overbarrel]
+
+        return [choice(i) for i in pack]
 
 ##########!BASE GUNS###############

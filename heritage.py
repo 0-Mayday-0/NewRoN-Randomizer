@@ -1,6 +1,7 @@
 from abstracts import *
 from random import choice
 from abc import abstractmethod
+import re
 
 class Primary(Gun):
     def __init__(self, name) -> None:
@@ -26,11 +27,12 @@ class Primary(Gun):
 
     def pretty_print_attachments(self):
         chosen = self.random_attachments()
+        pattern: re.Pattern = re.compile(r'(Optic)|(Underbarrel)|(Overbarrel)|(Muzzle)|(Magazine)|(Attachment)')
 
-        print(f'{repr(self)}:\n')
+        print(f'{str(self)}:\n')
 
         for i in chosen:
-            print(i)
+            print(f'{re.search(pattern, str(i.__class__.__mro__[1])).group()}: {i}')
 
 class Secondary(Gun):
     def __init__(self, name) -> None:
