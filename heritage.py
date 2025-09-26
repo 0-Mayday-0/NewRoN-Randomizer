@@ -1,12 +1,10 @@
 from abstracts import *
 from random import choice
+from abc import abstractmethod
 
 class Primary(Gun):
-    def __init__(self, name, allows_muzzle: bool = False, allows_magazine: bool = False) -> None:
+    def __init__(self, name) -> None:
         super().__init__(name)
-
-        self.allows_muzzle: bool = allows_muzzle
-        self.allows_magazine: bool  = allows_magazine
 
         self.optic: list[Optic] = []
         self.underbarrel: list[Underbarrel] = []
@@ -14,17 +12,15 @@ class Primary(Gun):
         self.muzzle: list[Muzzle] = []
         self.magazine: list[Magazine] = []
 
+    @abstractmethod
     def random_attachments(self) -> list[Attachment]:
-        pack: list[list[Attachment]] = [self.optic,
-                                        self.underbarrel,
-                                        self.overbarrel]
-
-        if self.allows_muzzle:
-            pack.append(self.muzzle)
-        if self.allows_magazine:
-            pack.append(self.magazine)
-
-
+        pack: list[list[Attachment] | list[None]] = [
+                                            self.optic,
+                                            self.underbarrel,
+                                            self.overbarrel,
+                                            self.muzzle,
+                                            self.magazine
+        ]
 
         return [choice(i) for i in pack]
 
@@ -37,21 +33,19 @@ class Primary(Gun):
             print(i)
 
 class Secondary(Gun):
-    def __init__(self, name, allows_optic: bool = True) -> None:
+    def __init__(self, name) -> None:
         super().__init__(name)
-
-        self.allows_optic: bool = allows_optic
 
         self.optic: list[Optic] = []
         self.muzzle: list[Muzzle] = []
         self.underbarrel: list[Underbarrel] = []
 
+    @abstractmethod
     def random_attachments(self) -> list[Attachment]:
         pack: list[list[Attachment]] = [self.muzzle,
-                                        self.underbarrel]
+                                        self.underbarrel,
+                                        self.optic]
 
-        if self.allows_optic:
-            pack.append(self.optic)
 
         return [choice(i) for i in pack]
 

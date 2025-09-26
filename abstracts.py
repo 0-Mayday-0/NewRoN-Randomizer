@@ -17,6 +17,10 @@ class Optic(Attachment):
         super().__init__(name)
 
 
+class Stock(Attachment):
+    def __init__(self, name: str) -> None:
+        super().__init__(name)
+
 class Underbarrel(Attachment):
     def __init__(self, name: str) -> None:
         super().__init__(name)
