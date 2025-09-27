@@ -2,6 +2,43 @@ from heritage import *
 from abstracts import *
 from random import choice
 
+###########AMMO###########
+
+class AP(Ammo):
+    def __init__(self, name="AP") -> None:
+        super().__init__(name)
+
+class JHP(Ammo):
+    def __init__(self, name="JHP") -> None:
+        super().__init__(name)
+
+class Buckshot(Ammo):
+    def __init__(self, name="Buckshot") -> None:
+        super().__init__(name)
+
+class Slug(Ammo):
+    def __init__(self, name="Slug") -> None:
+        super().__init__(name)
+
+# noinspection PyPep8Naming
+class Flash_Shell(Ammo):
+    def __init__(self, name="Flash Shell") -> None:
+        super().__init__(name)
+
+class Beanbag(Ammo):
+    def __init__(self, name="Beanbag"):
+        super().__init__(name)
+
+class Pepperball(Ammo):
+    def __init__(self, name="Pepperball") -> None:
+        super().__init__(name)
+
+# noinspection PyPep8Naming
+class Taser_Cartridge(Ammo):
+    def __init__(self, name="Taser Cartridge") -> None:
+        super().__init__(name)
+
+###########!AMMO###########
 
 
 ###########OPTICS###########
@@ -218,10 +255,14 @@ class Shotgun(Primary):
                                              M600V_Flashlight(),
                                              Laser_Pointer()]
 
+        self.ammo: list[Ammo] = [Buckshot(),
+                                 Slug()]
+
     def random_attachments(self) -> list[Attachment]:
         pack: list[list[Attachment]] = [self.optic,
                                         self.muzzle,
-                                        self.overbarrel]
+                                        self.overbarrel,
+                                        self.ammo]
 
         return [choice(i) for i in pack]
 

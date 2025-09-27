@@ -1,7 +1,16 @@
 from abc import ABC, abstractmethod
 
+
+class Ammo(ABC):
+    def __init__(self, name: str):
+        super().__init__()
+        self.name = name
+
+    def __str__(self) -> str:
+        return self.name
+
 class Attachment(ABC):
-    def __init__(self, name) -> None:
+    def __init__(self, name: str) -> None:
         super().__init__()
         self.name: str = name
 

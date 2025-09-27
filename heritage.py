@@ -12,6 +12,7 @@ class Primary(Gun):
         self.overbarrel: list[Overbarrel] = []
         self.muzzle: list[Muzzle] = []
         self.magazine: list[Magazine] = []
+        self.ammo: list[Ammo] = []
 
     @abstractmethod
     def random_attachments(self) -> list[Attachment]:
@@ -20,14 +21,15 @@ class Primary(Gun):
                                             self.underbarrel,
                                             self.overbarrel,
                                             self.muzzle,
-                                            self.magazine
+                                            self.magazine,
+                                            self.ammo
         ]
 
         return [choice(i) for i in pack]
 
     def pretty_print_attachments(self):
         chosen = self.random_attachments()
-        pattern: re.Pattern = re.compile(r'(Optic)|(Underbarrel)|(Overbarrel)|(Muzzle)|(Magazine)|(Attachment)')
+        pattern: re.Pattern = re.compile(r'(Optic)|(Underbarrel)|(Overbarrel)|(Muzzle)|(Magazine)|(Attachment)|(Ammo)')
 
         print(f'{str(self)}:\n')
 
@@ -41,6 +43,7 @@ class Secondary(Gun):
         self.optic: list[Optic] = []
         self.muzzle: list[Muzzle] = []
         self.underbarrel: list[Underbarrel] = []
+        self.ammo: list[Ammo] = []
 
     @abstractmethod
     def random_attachments(self) -> list[Attachment]:
