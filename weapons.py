@@ -192,6 +192,11 @@ class Flashlight(Overbarrel):
 ##########UNDERBARREL##################
 
 # noinspection PyPep8Naming
+class No_Underbarrel(Underbarrel):
+    def __init__(self, name = "None"):
+        super().__init__(name)
+
+# noinspection PyPep8Naming
 class Angled_Grip(Underbarrel):
     def __init__(self, name = "Angled Grip"):
         super().__init__(name)
@@ -263,6 +268,49 @@ class Shotgun(Primary):
                                         self.muzzle,
                                         self.overbarrel,
                                         self.ammo]
+
+        return [choice(i) for i in pack]
+
+# noinspection PyPep8Naming
+class Assault_Rifle(Primary):
+    def __init__(self, name):
+        super().__init__(name)
+
+        self.optic: list[Optic] = [No_Optic(),
+                                   Microt2(),
+                                   SRS(),
+                                   RMR_Dot(),
+                                   SRO_Dot()]
+
+        self.muzzle: list[Muzzle] = [No_Muzzle(),
+                                     Socom_Suppressor(),
+                                     ASR_Brake(),
+                                     SFMB_Brake()]
+
+        self.underbarrel: list[Underbarrel] = [No_Underbarrel(),
+                                               Vertical_Grip(),
+                                               Angled_Grip(),
+                                               Combat_Grip()]
+
+        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
+                                             Laser_Pointer(),
+                                             M600V_Flashlight(),
+                                             PEQ_15_IR_Laser()]
+
+        self.ammo: list[Ammo] = [AP(),
+                                 JHP()]
+
+        self.magazine: list[Magazine] | None = None
+
+    def random_attachments(self) -> list[Attachment]:
+        pack: list[list[Attachment]] = [self.optic,
+                                        self.muzzle,
+                                        self.underbarrel,
+                                        self.overbarrel,
+                                        self.ammo]
+
+        if self.magazine:
+            pack.append(self.magazine)
 
         return [choice(i) for i in pack]
 
