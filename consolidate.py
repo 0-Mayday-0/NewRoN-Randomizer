@@ -2,6 +2,22 @@ from weapons import *
 
 ##########GEAR##################
 
+# noinspection PyPep8Naming
+class Anti_Stab_Vest(Armor):
+    def __init__(self, name="Anti-Stab Vest") -> None:
+        super().__init__(name)
+        self.sides: None = None
+
+# noinspection PyPep8Naming
+class Light_Armor(Armor):
+    def __init__(self, name="Light Armor") -> None:
+        super().__init__(name)
+
+# noinspection PyPep8Naming
+class Heavy_Armor(Armor):
+    def __init__(self, name="Heavy Armor") -> None:
+        super().__init__(name)
+
 ##########!GEAR##################
 
 ##########SHOTGUNS##################
@@ -185,6 +201,7 @@ class SR_16(Assault_Rifle):
 
 def main():
     SR_16().pretty_print_attachments()
+    Heavy_Armor().pretty_print_setup()
 
 if __name__ == '__main__':
     main()

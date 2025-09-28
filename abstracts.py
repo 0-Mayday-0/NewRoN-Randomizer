@@ -5,15 +5,24 @@ class Side(ABC):
     def __init__(self, orientation: str):
         self.orientation = orientation
 
+    def __str__(self):
+        return self.orientation
+
 class Material(ABC):
     def __init__(self, material: str):
         self.material = material
+
+    def __str__(self):
+        return self.material
 
 class Gear(ABC):
     def __init__(self, name: str):
         self.name = name
         self.sides: list[Side]
         self.materials: list[Material]
+
+    def __str__(self):
+        return self.name
 
     @abstractmethod
     def random_setup(self) -> list[Side | Material]:
@@ -38,6 +47,33 @@ class Attachment(ABC):
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}: {self.name}"
+
+class Kevlar(Material):
+    def __init__(self, material: str = "Kevlar") -> None:
+        super().__init__(material)
+
+class Steel(Material):
+    def __init__(self, material: str = "Steel") -> None:
+        super().__init__(material)
+
+class Ceramic(Material):
+    def __init__(self, material: str = "Ceramic") -> None:
+        super().__init__(material)
+
+# noinspection PyPep8Naming
+class No_Armor(Side):
+    def __init__(self, orientation: str = "No armor") -> None:
+        super().__init__(orientation)
+
+# noinspection PyPep8Naming
+class Front_Only(Side):
+    def __init__(self, orientation: str = "Front only") -> None:
+        super().__init__(orientation)
+
+# noinspection PyPep8Naming
+class Front_And_Back(Side):
+    def __init__(self, orientation: str = "Front & Back") -> None:
+        super().__init__(orientation)
 
 class Optic(Attachment):
     def __init__(self, name: str) -> None:

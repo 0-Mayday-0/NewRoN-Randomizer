@@ -62,17 +62,28 @@ class Secondary(Gun):
 class Armor(Gear):
     def __init__(self, name: str) -> None:
         super().__init__(name)
-        self.materials: list[Material] = []
-        self.sides: list[Side] = []
+        self.materials: list[Material] = [Kevlar(),
+                                          Steel(),
+                                          Ceramic()]
+
+        self.sides: list[Side] = [No_Armor(),
+                                  Front_Only(),
+                                  Front_And_Back()]
 
     def random_setup(self) -> list[Material | Side]:
-        return [choice(i) for i in (self.materials, self.sides)]
+        if self.sides:
+            return [choice(i) for i in (self.materials, self.sides)]
+
+        else:
+            return [choice(self.materials)]
 
     def pretty_print_setup(self) -> None:
         chosen: list[Material | Side] = self.random_setup()
 
+        print(f'{re.search(r"(Armor)", str(self.__class__.__mro__[1])).group()}: {str(self)}')
+
         for i in chosen:
-            print(i)
+            print(f'{re.search(r'(Material)|(Side)', str(i.__class__.__mro__[1])).group()}: {i}')
 
 def main():
     raise NotImplementedError
