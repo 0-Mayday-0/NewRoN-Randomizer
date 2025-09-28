@@ -1,5 +1,22 @@
 from abc import ABC, abstractmethod
 
+class Side(ABC):
+    def __init__(self, orientation: str):
+        self.orientation = orientation
+
+class Material(ABC):
+    def __init__(self, material: str):
+        self.material = material
+
+class Gear(ABC):
+    def __init__(self, name: str):
+        self.name = name
+        self.sides: list[Side]
+        self.material: list[Material]
+
+    @abstractmethod
+    def random_setup(self) -> list[Side | Material]:
+        pass
 
 class Ammo(ABC):
     def __init__(self, name: str):
