@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from random import choice
 
 class Side(ABC):
     def __init__(self, orientation: str):
@@ -12,7 +13,7 @@ class Gear(ABC):
     def __init__(self, name: str):
         self.name = name
         self.sides: list[Side]
-        self.material: list[Material]
+        self.materials: list[Material]
 
     @abstractmethod
     def random_setup(self) -> list[Side | Material]:
@@ -80,6 +81,14 @@ class Gun(ABC):
     def random_attachments(self) -> list[Attachment]:
         pass
 
+class Armor(Gear):
+    def __init__(self, name: str) -> None:
+        super().__init__(name)
+        self.materials: list[Material] = []
+        self.sides: list[Side] = []
+
+    def random_setup(self) -> list[Material | Side]:
+        return [choice(i) for i in (self.materials, self.sides)]
 
 def main():
     at = [Optic("Red dot"), Underbarrel("Flash")]
