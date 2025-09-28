@@ -1,5 +1,9 @@
 from weapons import *
 
+##########GEAR##################
+
+##########!GEAR##################
+
 ##########SHOTGUNS##################
 class B1301(Shotgun):
     def __init__(self, name = "B1301"):

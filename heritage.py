@@ -59,6 +59,21 @@ class Secondary(Gun):
         for i in self.random_attachments():
             print(i)
 
+class Armor(Gear):
+    def __init__(self, name: str) -> None:
+        super().__init__(name)
+        self.materials: list[Material] = []
+        self.sides: list[Side] = []
+
+    def random_setup(self) -> list[Material | Side]:
+        return [choice(i) for i in (self.materials, self.sides)]
+
+    def pretty_print_setup(self) -> None:
+        chosen: list[Material | Side] = self.random_setup()
+
+        for i in chosen:
+            print(i)
+
 def main():
     raise NotImplementedError
 
