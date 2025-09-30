@@ -3,6 +3,9 @@ from random import choice
 from abc import abstractmethod
 import re
 
+
+
+
 class Primary(Gun):
     def __init__(self, name) -> None:
         super().__init__(name)
@@ -62,6 +65,8 @@ class Secondary(Gun):
 class Armor(Gear):
     def __init__(self, name: str) -> None:
         super().__init__(name)
+        self.slots: int = 4
+        self.deployable_slots: int = 2
         self.materials: list[Material] = [Kevlar(),
                                           Steel(),
                                           Ceramic()]
@@ -70,20 +75,53 @@ class Armor(Gear):
                                   Front_Only(),
                                   Front_And_Back()]
 
-    def random_setup(self) -> list[Material | Side]:
-        if self.sides:
-            return [choice(i) for i in (self.materials, self.sides)]
+        self.grenades: list[Grenade] = [Flashbang(),
+                                        CS_Gas(),
+                                        Stinger()]
 
-        else:
-            return [choice(self.materials)]
+        self.deployables: list[Deployable] = [C2_Explosives(),
+                                              Door_Wedge(),
+                                              Pepper_Spray(),
+                                              Lockpick_Gun()]
+
+    def random_setup(self) -> tuple[list[Material | Side],
+                                    dict[Grenade, int],
+                                    dict[Deployable, int]]:
+
+        pack: list[list[Material] | list[Side] | list[Grenade]] = [self.materials]
+
+        if self.sides:
+            pack.append(self.sides)
+
+        for i in range(self.slots):
+            choice(self.grenades).add_one()
+
+        for j in range(self.deployable_slots):
+            choice(self.deployables).add_one()
+
+        return ([choice(i) for i in pack],
+                {g: g.quantity for g in self.grenades},
+                {d: d.quantity for d in self.deployables})
+
+
 
     def pretty_print_setup(self) -> None:
-        chosen: list[Material | Side] = self.random_setup()
+        chosen: tuple[list[Material | Side], dict[Grenade, int]] = self.random_setup()
 
         print(f'{re.search(r"(Armor)", str(self.__class__.__mro__[1])).group()}: {str(self)}')
 
-        for i in chosen:
-            print(f'{re.search(r'(Material)|(Side)', str(i.__class__.__mro__[1])).group()}: {i}')
+        for i in chosen[0]:
+            print(f'{re.search(r"(Material)|(Side)" ,str(i.__class__.__mro__[1])).group()}: {i}')
+        print()
+
+        for k, v in chosen[1].items():
+            print(f'{k}: {v}')
+
+        print()
+
+        for k, v in chosen[2].items():
+            print(f'{k}: {v}')
+
 
 def main():
     raise NotImplementedError

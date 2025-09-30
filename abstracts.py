@@ -1,6 +1,30 @@
 from abc import ABC, abstractmethod
 from random import choice
 
+class Throwable(ABC):
+    def __init__(self, name: str):
+        self.name = name
+        self.quantity: int = 0
+
+    def __str__(self):
+        return self.name
+
+    @abstractmethod
+    def add_one(self) -> None:
+        pass
+
+class Tactical(ABC):
+    def __init__(self, name: str):
+        self.name = name
+        self.quantity: int = 0
+
+    def __str__(self):
+        return self.name
+
+    @abstractmethod
+    def add_one(self) -> None:
+        pass
+
 class Side(ABC):
     def __init__(self, orientation: str):
         self.orientation = orientation
@@ -18,6 +42,8 @@ class Material(ABC):
 class Gear(ABC):
     def __init__(self, name: str):
         self.name = name
+        self.slots: int
+        self.grenades: list[Throwable]
         self.sides: list[Side]
         self.materials: list[Material]
 
@@ -116,6 +142,60 @@ class Gun(ABC):
     @abstractmethod
     def random_attachments(self) -> list[Attachment]:
         pass
+
+##########THROWABLES###############
+class Grenade(Throwable):
+    def __init__(self, name) -> None:
+        super().__init__(name)
+
+    def add_one(self) -> None:
+        self.quantity += 1
+
+class Flashbang(Grenade):
+    def __init__(self, name = "Flashbang"):
+        super().__init__(name)
+
+# noinspection PyPep8Naming
+class CS_Gas(Grenade):
+    def __init__(self, name = "CS Gas"):
+        super().__init__(name)
+
+class Stinger(Grenade):
+    def __init__(self, name = "Stinger Grenade"):
+        super().__init__(name)
+
+##########!THROWABLES###############
+
+##########TACTICAL###############
+
+class Deployable(Tactical):
+    def __init__(self, name: str) -> None:
+        super().__init__(name)
+
+    def add_one(self) -> None:
+        self.quantity += 1
+
+# noinspection PyPep8Naming
+class C2_Explosives(Deployable):
+    def __init__(self, name: str = "C2 Explosives") -> None:
+        super().__init__(name)
+
+# noinspection PyPep8Naming
+class Door_Wedge(Deployable):
+    def __init__(self, name: str = "Door Wedge") -> None:
+        super().__init__(name)
+
+# noinspection PyPep8Naming
+class Pepper_Spray(Deployable):
+    def __init__(self, name: str = "Pepper Spray") -> None:
+        super().__init__(name)
+
+# noinspection PyPep8Naming
+class Lockpick_Gun(Deployable):
+    def __init__(self, name: str = "Lockpick Gun") -> None:
+        super().__init__(name)
+
+##########!TACTICAL###############
 
 def main():
     at = [Optic("Red dot"), Underbarrel("Flash")]

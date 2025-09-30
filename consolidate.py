@@ -7,16 +7,19 @@ class Anti_Stab_Vest(Armor):
     def __init__(self, name="Anti-Stab Vest") -> None:
         super().__init__(name)
         self.sides: None = None
+        self.deployable_slots: int = 3
 
 # noinspection PyPep8Naming
 class Light_Armor(Armor):
     def __init__(self, name="Light Armor") -> None:
         super().__init__(name)
+        self.slots: int = 3
 
 # noinspection PyPep8Naming
 class Heavy_Armor(Armor):
     def __init__(self, name="Heavy Armor") -> None:
         super().__init__(name)
+        self.slots: int = 2
 
 ##########!GEAR##################
 
@@ -201,7 +204,7 @@ class SR_16(Assault_Rifle):
 
 def main():
     SR_16().pretty_print_attachments()
-    Heavy_Armor().pretty_print_setup()
+    Anti_Stab_Vest().pretty_print_setup()
 
 if __name__ == '__main__':
     main()
