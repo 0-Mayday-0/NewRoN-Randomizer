@@ -303,14 +303,49 @@ class Assault_Rifle(Primary):
         self.magazine: list[Magazine] | None = None
 
     def random_attachments(self) -> list[Attachment]:
-        pack: list[list[Attachment]] = [self.optic,
-                                        self.muzzle,
-                                        self.underbarrel,
-                                        self.overbarrel,
-                                        self.ammo]
+        pack: list[list[Attachment | Ammo]] = [self.optic,
+                                               self.muzzle,
+                                               self.underbarrel,
+                                               self.overbarrel,
+                                               self.ammo]
 
         if self.magazine:
             pack.append(self.magazine)
+
+        return [choice(i) for i in pack]
+
+
+# noinspection PyPep8Naming
+class SMG(Primary):
+    def __init__(self, name):
+        super().__init__(name)
+
+        self.optic: list[Optic] = [No_Optic(),
+                                   Microt2(),
+                                   RMR_Dot(),
+                                   SRO_Dot()]
+
+        self.muzzle: list[Muzzle] = [No_Muzzle(),
+                                     Tundra_Suppressor(),
+                                     Harvester_Suppressor()]
+
+        self.ammo: list[Ammo] = [AP(),
+                                 JHP()]
+
+        self.underbarrel: list[Underbarrel] | None = None
+        self.overbarrel: list[Overbarrel] | None = None
+
+    def random_attachments(self) -> list[Attachment]:
+        pack: list[list[Attachment | Ammo]] = [self.optic,
+                                               self.muzzle]
+
+        if self.underbarrel:
+            pack.append(self.underbarrel)
+
+        if self.overbarrel:
+            pack.append(self.overbarrel)
+
+        pack.append(self.ammo)
 
         return [choice(i) for i in pack]
 

@@ -202,8 +202,27 @@ class SR_16(Assault_Rifle):
 
 ##########!ARs##################
 
+##########SMGs##################
+
+# noinspection PyPep8Naming
+class MP5_10mm(SMG):
+    def __init__(self, name = "MP5/10mm"):
+        super().__init__(name)
+
+        self.underbarrel: list[Underbarrel] = [No_Underbarrel(),
+                                               Vertical_Grip(),
+                                               Angled_Grip(),
+                                               Combat_Grip()]
+
+        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
+                                             Laser_Pointer(),
+                                             M600V_Flashlight(),
+                                             PEQ_15_IR_Laser()]
+
+##########!SMGs##################
+
 def main():
-    SR_16().pretty_print_attachments()
+    MP5_10mm().pretty_print_attachments()
     Anti_Stab_Vest().pretty_print_setup()
 
 if __name__ == '__main__':
