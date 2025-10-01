@@ -219,10 +219,101 @@ class MP5_10mm(SMG):
                                              M600V_Flashlight(),
                                              PEQ_15_IR_Laser()]
 
+# noinspection PyPep8Naming
+class MP5A3(SMG):
+    def __init__(self, name = "MP5A3"):
+        super().__init__(name)
+
+        self.underbarrel: list[Underbarrel] = [No_Underbarrel(),
+                                               Vertical_Grip(),
+                                               Angled_Grip(),
+                                               Combat_Grip()]
+
+        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
+                                             Laser_Pointer(),
+                                             M600V_Flashlight(),
+                                             PEQ_15_IR_Laser()]
+
+# noinspection PyPep8Naming
+class MP5A2(SMG):
+    def __init__(self, name = "MP5A2"):
+        super().__init__(name)
+
+        self.optic: list[Optic] = [No_Optic(),
+                                   Microt2(),
+                                   SRS(),
+                                   Holosight_EXPS3(),
+                                   SRO_Dot()]
+
+        self.muzzle: list[Muzzle] = [No_Muzzle(),
+                                     Suppressor()]
+
+        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
+                                             Flashlight()]
+
+# noinspection PyPep8Naming
+class MP9(SMG):
+    def __init__(self, name = "MP9"):
+        super().__init__(name)
+
+        self.muzzle: list[Muzzle] = [No_Muzzle(),
+                                     MP9_Suppressor()]
+
+        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
+                                             M600V_Flashlight(),
+                                             Mault_IR_Laser(),
+                                             Laser_Pointer()]
+
+# noinspection PyPep8Naming
+class MPX(SMG):
+    def __init__(self, name = "MPX"):
+        super().__init__(name)
+
+        self.optic: list[Optic] = [No_Optic(),
+                                   Holosight_EXPS3(),
+                                   Microt2(),
+                                   SRO_Dot()]
+
+        self.underbarrel: list[Underbarrel] = [No_Underbarrel(),
+                                               Vertical_Grip(),
+                                               Angled_Grip(),
+                                               Combat_Grip()]
+
+        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
+                                             M600V_Flashlight(),
+                                             Mault_IR_Laser(),
+                                             Laser_Pointer()]
+
+
+# noinspection PyPep8Naming
+class UMP_45(SMG):
+    def __init__(self, name = "UMP-45"):
+        super().__init__(name)
+
+        self.optic: list[Optic] = [No_Optic(),
+                                   Microt2(),
+                                   Holosight_EXPS3(),
+                                   SRS(),
+                                   SRO_Dot()]
+
+        self.muzzle: list[Muzzle] = [No_Muzzle(),
+                                     Large_Suppressor()]
+
+        self.underbarrel: list[Underbarrel] = [No_Underbarrel(),
+                                               Vertical_Grip(),
+                                               Angled_Grip(),
+                                               Combat_Grip()]
+
+        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
+                                             Laser_Pointer(),
+                                             M600V_Flashlight()]
+
+        self.stock: list[Stock] = [Unfolded_Stock(),
+                                   Folded_Stock()]
 ##########!SMGs##################
 
 def main():
-    MP5_10mm().pretty_print_attachments()
+    UMP_45().pretty_print_attachments()
     Anti_Stab_Vest().pretty_print_setup()
 
 if __name__ == '__main__':

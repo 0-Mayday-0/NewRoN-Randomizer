@@ -334,6 +334,7 @@ class SMG(Primary):
 
         self.underbarrel: list[Underbarrel] | None = None
         self.overbarrel: list[Overbarrel] | None = None
+        self.stock: list[Stock] | None = None
 
     def random_attachments(self) -> list[Attachment]:
         pack: list[list[Attachment | Ammo]] = [self.optic,
@@ -344,6 +345,9 @@ class SMG(Primary):
 
         if self.overbarrel:
             pack.append(self.overbarrel)
+
+        if self.stock:
+            pack.append(self.stock)
 
         pack.append(self.ammo)
 

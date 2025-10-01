@@ -32,7 +32,7 @@ class Primary(Gun):
 
     def pretty_print_attachments(self):
         chosen = self.random_attachments()
-        pattern: re.Pattern = re.compile(r'(Optic)|(Underbarrel)|(Overbarrel)|(Muzzle)|(Magazine)|(Attachment)|(Ammo)')
+        pattern: re.Pattern = re.compile(r'(Optic)|(Underbarrel)|(Overbarrel)|(Muzzle)|(Magazine)|(Attachment)|(Ammo)|(Stock)')
 
         print(f'{str(self)}:\n')
 
