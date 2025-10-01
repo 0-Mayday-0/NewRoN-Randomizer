@@ -106,7 +106,9 @@ class Armor(Gear):
 
 
     def pretty_print_setup(self) -> None:
-        chosen: tuple[list[Material | Side], dict[Grenade, int]] = self.random_setup()
+        chosen: tuple[list[Material | Side], 
+                      dict[Grenade, int],
+                      dict[Deployable, int]] = self.random_setup()
 
         print(f'{re.search(r"(Armor)", str(self.__class__.__mro__[1])).group()}: {str(self)}')
 
