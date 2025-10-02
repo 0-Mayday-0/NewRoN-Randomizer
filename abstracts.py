@@ -13,6 +13,21 @@ class Throwable(ABC):
     def add_one(self) -> None:
         pass
 
+# noinspection PyPep8Naming
+class Long_Tactical(ABC):
+    def __init__(self, name: str):
+        self.name = name
+
+    def __str__(self):
+        return self.name
+
+class Headwear(ABC):
+    def __init__(self, name: str):
+        self.name = name
+
+    def __str__(self):
+        return self.name
+
 class Tactical(ABC):
     def __init__(self, name: str):
         self.name = name
