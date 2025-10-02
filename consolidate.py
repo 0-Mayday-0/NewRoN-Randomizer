@@ -346,6 +346,7 @@ class R7_Launcher(Less_Lethal):
 ##########!LESSLETHAL##################
 
 ##########PISTOLS#################
+
 class P92X(Pistol):
     def __init__(self, name="P92X"):
         super().__init__(name)
@@ -353,10 +354,60 @@ class P92X(Pistol):
         self.muzzle: list[Muzzle] = [No_Muzzle(),
                                      XF_brake(),
                                      Suppressor()]
+
+class Magnum357(Pistol):
+    def __init__(self, name=".357 Magnum"):
+        super().__init__(name)
+
+        self.optic: list[Optic] | None = None
+
+        self.muzzle: list[Muzzle] = [No_Muzzle(),
+                                     SnubNose()]
+
+        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
+                                             Laser_Pointer()]
+# noinspection PyPep8Naming
+class USG_57(Pistol):
+    def __init__(self, name="57 USG"):
+        super().__init__(name)
+
+        self.muzzle: list[Muzzle] = [No_Muzzle(),
+                                     Tundra_Suppressor()]
+
+        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
+                                             Laser_Pointer(),
+                                             Flashlight()]
+
+class M45A1(Pistol):
+    def __init__(self, name="M45A1"):
+        super().__init__(name)
+
+        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
+                                             Laser_Pointer(),
+                                             Flashlight()]
+
+class PC19(Pistol):
+    def __init__(self, name="PC19"):
+        super().__init__(name)
+
+        self.muzzle: list[Muzzle] = [No_Muzzle(),
+                                     Compensator(),
+                                     Suppressor()]
+# noinspection PyPep8Naming
+class USP45(Pistol):
+    def __init__(self, name="USP45"):
+        super().__init__(name)
+
+        self.muzzle: list[Muzzle] = [No_Muzzle(),
+                                     Suppressor()]
+
+class Taser(Secondary_Less_Lethal):
+    def __init__(self, name="Taser"):
+        super().__init__(name)
 ##########!PISTOLS#################
 
 def main():
-    P92X().pretty_print_attachments()
+    Taser().pretty_print_attachments()
     Anti_Stab_Vest().pretty_print_setup()
 
 if __name__ == '__main__':

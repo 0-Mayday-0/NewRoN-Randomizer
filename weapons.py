@@ -94,8 +94,13 @@ class No_Muzzle(Muzzle):
     def __init__(self):
         super().__init__(name="None")
 
+# noinspection PyPep8Naming
 class XF_brake(Muzzle):
     def __init__(self, name = "XF brake"):
+        super().__init__(name)
+
+class SnubNose(Muzzle):
+    def __init__(self, name = "Snubnose"):
         super().__init__(name)
 
 class Compensator(Muzzle):
@@ -398,13 +403,26 @@ class Less_Lethal(Primary):
 
         return [choice(i) for i in pack]
 
+# noinspection PyPep8Naming
+class Secondary_Less_Lethal(Secondary):
+    def __init__(self, name):
+        super().__init__(name)
+
+        self.ammo: list[Ammo] = [Taser_Cartridge()]
+
+    def random_attachments(self) -> list[Ammo]:
+        pack: list[list[Ammo]] = [self.ammo]
+
+
+        return [choice(i) for i in pack]
+
 class Pistol(Secondary):
     def __init__(self, name):
         super().__init__(name)
 
-        self.optic: list[Optic] = [No_Optic(),
-                                   SRO_Dot(),
-                                   RMR_Dot()]
+        self.optic: list[Optic] | None = [No_Optic(),
+                                          SRO_Dot(),
+                                          RMR_Dot()]
 
         self.muzzle: list[Muzzle] = [No_Muzzle(),
                                      Compensator(),
@@ -419,11 +437,11 @@ class Pistol(Secondary):
                                  JHP()]
 
     def random_attachments(self) -> list[Attachment]:
-        pack: list[list[Attachment | Ammo]] = [self.optic,
+        pack: list[list[Attachment | Ammo]] = [self.overbarrel,
                                                self.muzzle]
 
-        if self.overbarrel:
-            pack.append(self.overbarrel)
+        if self.optic:
+            pack.append(self.optic)
 
         pack.append(self.ammo)
 
