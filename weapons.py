@@ -94,6 +94,14 @@ class No_Muzzle(Muzzle):
     def __init__(self):
         super().__init__(name="None")
 
+class XF_brake(Muzzle):
+    def __init__(self, name = "XF brake"):
+        super().__init__(name)
+
+class Compensator(Muzzle):
+    def __init__(self, name = "Compensator"):
+        super().__init__(name)
+
 # noinspection PyPep8Naming
 class Spread_Choke(Muzzle):
     def __init__(self, name = "Spread Choke"):
@@ -157,6 +165,12 @@ class Large_Suppressor(Muzzle):
 class No_Overbarrel(Overbarrel):
     def __init__(self):
         super().__init__(name="None")
+
+# noinspection PyPep8Naming
+class IR_Laser(Overbarrel):
+    def __init__(self, name = "IR Laser"):
+        super().__init__(name)
+
 
 # noinspection PyPep8Naming
 class Integrated_Flashlight(Overbarrel):
@@ -367,6 +381,8 @@ class Less_Lethal(Primary):
                                              Laser_Pointer(),
                                              Flashlight()]
 
+
+
         self.ammo: list[Ammo] | None = None
 
         self.underbarrel: list[Underbarrel] | None = None
@@ -377,6 +393,37 @@ class Less_Lethal(Primary):
 
         if self.underbarrel:
             pack.append(self.underbarrel)
+
+        pack.append(self.ammo)
+
+        return [choice(i) for i in pack]
+
+class Pistol(Secondary):
+    def __init__(self, name):
+        super().__init__(name)
+
+        self.optic: list[Optic] = [No_Optic(),
+                                   SRO_Dot(),
+                                   RMR_Dot()]
+
+        self.muzzle: list[Muzzle] = [No_Muzzle(),
+                                     Compensator(),
+                                     Large_Suppressor()]
+
+        self.overbarrel: list[Overbarrel] | None = [No_Overbarrel(),
+                                                    Flashlight(),
+                                                    Laser_Pointer(),
+                                                    IR_Laser()]
+
+        self.ammo: list[Ammo] = [AP(),
+                                 JHP()]
+
+    def random_attachments(self) -> list[Attachment]:
+        pack: list[list[Attachment | Ammo]] = [self.optic,
+                                               self.muzzle]
+
+        if self.overbarrel:
+            pack.append(self.overbarrel)
 
         pack.append(self.ammo)
 

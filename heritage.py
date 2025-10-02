@@ -58,9 +58,14 @@ class Secondary(Gun):
         return [choice(i) for i in pack]
 
     def pretty_print_attachments(self):
-        print(f'{repr(self)}:\n')
-        for i in self.random_attachments():
-            print(i)
+        chosen = self.random_attachments()
+        pattern: re.Pattern = re.compile(
+            r'(Optic)|(Underbarrel)|(Overbarrel)|(Muzzle)|(Magazine)|(Attachment)|(Ammo)|(Stock)')
+
+        print(f'{str(self)}:\n')
+
+        for i in chosen:
+            print(f'{re.search(pattern, str(i.__class__.__mro__[1])).group()}: {i}')
 
 class Armor(Gear):
     def __init__(self, name: str) -> None:

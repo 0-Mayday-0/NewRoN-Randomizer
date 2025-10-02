@@ -345,8 +345,18 @@ class R7_Launcher(Less_Lethal):
 
 ##########!LESSLETHAL##################
 
+##########PISTOLS#################
+class P92X(Pistol):
+    def __init__(self, name="P92X"):
+        super().__init__(name)
+
+        self.muzzle: list[Muzzle] = [No_Muzzle(),
+                                     XF_brake(),
+                                     Suppressor()]
+##########!PISTOLS#################
+
 def main():
-    R7_Launcher().pretty_print_attachments()
+    P92X().pretty_print_attachments()
     Anti_Stab_Vest().pretty_print_setup()
 
 if __name__ == '__main__':
