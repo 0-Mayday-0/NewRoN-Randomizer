@@ -312,8 +312,41 @@ class UMP_45(SMG):
                                    Folded_Stock()]
 ##########!SMGs##################
 
+##########LESSLETHAL##################
+
+# noinspection PyPep8Naming
+class Beanbag_Shotgun(Less_Lethal):
+    def __init__(self, name="Beanbag Shotgun"):
+        super().__init__(name)
+        self.ammo: list[Ammo] = [Beanbag()]
+
+# noinspection PyPep8Naming
+class R7_Launcher(Less_Lethal):
+    def __init__(self, name="R7 Launcher"):
+        super().__init__(name)
+
+        self.optic: list[Optic] = [No_Optic(),
+                                   Holosight_EXPS3(),
+                                   Microt2(),
+                                   M5B(),
+                                   SRS()]
+
+        self.underbarrel: list[Underbarrel] = [No_Underbarrel(),
+                                               Vertical_Grip(),
+                                               Combat_Grip(),
+                                               Angled_Grip()]
+
+        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
+                                             M600V_Flashlight(),
+                                             Laser_Pointer(),
+                                             Mault_IR_Laser()]
+
+        self.ammo: list[Ammo] = [Pepperball()]
+
+##########!LESSLETHAL##################
+
 def main():
-    UMP_45().pretty_print_attachments()
+    R7_Launcher().pretty_print_attachments()
     Anti_Stab_Vest().pretty_print_setup()
 
 if __name__ == '__main__':

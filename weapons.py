@@ -354,7 +354,7 @@ class SMG(Primary):
         return [choice(i) for i in pack]
 
 # noinspection PyPep8Naming
-class Less_Lethal(Gun):
+class Less_Lethal(Primary):
     def __init__(self, name):
         super().__init__(name)
 
@@ -367,7 +367,7 @@ class Less_Lethal(Gun):
                                              Laser_Pointer(),
                                              Flashlight()]
 
-        self.ammo: list[Ammo] = [Pepperball()]
+        self.ammo: list[Ammo] | None = None
 
         self.underbarrel: list[Underbarrel] | None = None
 
