@@ -353,4 +353,33 @@ class SMG(Primary):
 
         return [choice(i) for i in pack]
 
+# noinspection PyPep8Naming
+class Less_Lethal(Gun):
+    def __init__(self, name):
+        super().__init__(name)
+
+        self.optic: list[Optic] = [No_Optic(),
+                                   RMR_Dot(),
+                                   SRO_Dot(),
+                                   Microt2()]
+
+        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
+                                             Laser_Pointer(),
+                                             Flashlight()]
+
+        self.ammo: list[Ammo] = [Pepperball()]
+
+        self.underbarrel: list[Underbarrel] | None = None
+
+    def random_attachments(self) -> list[Attachment]:
+        pack: list[list[Attachment | Ammo]] = [self.optic,
+                                               self.overbarrel]
+
+        if self.underbarrel:
+            pack.append(self.underbarrel)
+
+        pack.append(self.ammo)
+
+        return [choice(i) for i in pack]
+
 ##########!BASE GUNS###############
