@@ -343,6 +343,10 @@ class R7_Launcher(Less_Lethal):
 
         self.ammo: list[Ammo] = [Pepperball()]
 
+class Taser(Secondary_Less_Lethal):
+    def __init__(self, name="Taser"):
+        super().__init__(name)
+
 ##########!LESSLETHAL##################
 
 ##########PISTOLS#################
@@ -401,9 +405,6 @@ class USP45(Pistol):
         self.muzzle: list[Muzzle] = [No_Muzzle(),
                                      Suppressor()]
 
-class Taser(Secondary_Less_Lethal):
-    def __init__(self, name="Taser"):
-        super().__init__(name)
 ##########!PISTOLS#################
 
 def main():
