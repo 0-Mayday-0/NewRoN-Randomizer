@@ -198,7 +198,30 @@ class SR_16(Assault_Rifle):
                                    SDR_1_4x(),
                                    Atak_R_1_12x()]
 
+# noinspection PyPep8Naming
+class DM4PDW(Assault_Rifle):
+    def __init__(self, name = "DM4PDW"):
+        super().__init__(name)
 
+        self.optic: list[Optic] = [No_Optic(),
+                                   SRS(),
+                                   Microt2(),
+                                   M5B(),
+                                   C510(),
+                                   Holosight_EXPS3(),
+                                   XE_Sight(),
+                                   SDR_1_4x()]
+
+        self.underbarrel: list[Underbarrel] = [No_Underbarrel(),
+                                               Combat_Grip(),
+                                               Vertical_Grip(),
+                                               Angled_Grip(),
+                                               Side_Angle_Grip()]
+
+        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
+                                             Mault_IR_Laser(),
+                                             M600V_Flashlight(),
+                                             Laser_Pointer()]
 
 ##########!ARs##################
 
@@ -408,7 +431,7 @@ class USP45(Pistol):
 ##########!PISTOLS#################
 
 def main():
-    Taser().pretty_print_attachments()
+    DM4PDW().pretty_print_attachments()
     Anti_Stab_Vest().pretty_print_setup()
 
 if __name__ == '__main__':

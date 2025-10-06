@@ -85,6 +85,15 @@ class Atak_R_1_12x(Optic):
     def __init__(self, name = "Atak-R 1-12x"):
         super().__init__(name)
 
+class C510(Optic):
+    def __init__(self, name = "510C"):
+        super().__init__(name)
+
+# noinspection PyPep8Naming
+class XE_Sight(Optic):
+    def __init__(self, name = "XE Sight"):
+        super().__init__(name)
+
 ##########!OPTICS##################
 
 ##########MUZZLES##################
@@ -228,6 +237,11 @@ class Combat_Grip(Underbarrel):
 # noinspection PyPep8Naming
 class Vertical_Grip(Underbarrel):
     def __init__(self, name = "Vertical Grip"):
+        super().__init__(name)
+
+# noinspection PyPep8Naming
+class Side_Angle_Grip(Underbarrel):
+    def __init__(self, name: str = "Side Angle Grip"):
         super().__init__(name)
 
 ##########!UNDERBARREL##################

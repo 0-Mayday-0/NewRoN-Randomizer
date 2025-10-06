@@ -17,7 +17,8 @@ class WeaponsPack:
                                          SA_58(),
                                          MK16(),
                                          SLR47(),
-                                         SR_16()]
+                                         SR_16(),
+                                         DM4PDW()]
 
         self.smgs: list[SMG] = [MP5_10mm(),
                                 MP5A3(),
