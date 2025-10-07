@@ -2,7 +2,7 @@ from abstracts import *
 from random import choice
 from abc import abstractmethod
 import re
-
+from tactical import *
 
 
 

@@ -166,18 +166,6 @@ class Grenade(Throwable):
     def add_one(self) -> None:
         self.quantity += 1
 
-class Flashbang(Grenade):
-    def __init__(self, name = "Flashbang"):
-        super().__init__(name)
-
-# noinspection PyPep8Naming
-class CS_Gas(Grenade):
-    def __init__(self, name = "CS Gas"):
-        super().__init__(name)
-
-class Stinger(Grenade):
-    def __init__(self, name = "Stinger Grenade"):
-        super().__init__(name)
 
 ##########!THROWABLES###############
 
@@ -190,25 +178,6 @@ class Deployable(Tactical):
     def add_one(self) -> None:
         self.quantity += 1
 
-# noinspection PyPep8Naming
-class C2_Explosives(Deployable):
-    def __init__(self, name: str = "C2 Explosives") -> None:
-        super().__init__(name)
-
-# noinspection PyPep8Naming
-class Door_Wedge(Deployable):
-    def __init__(self, name: str = "Door Wedge") -> None:
-        super().__init__(name)
-
-# noinspection PyPep8Naming
-class Pepper_Spray(Deployable):
-    def __init__(self, name: str = "Pepper Spray") -> None:
-        super().__init__(name)
-
-# noinspection PyPep8Naming
-class Lockpick_Gun(Deployable):
-    def __init__(self, name: str = "Lockpick Gun") -> None:
-        super().__init__(name)
 
 ##########!TACTICAL###############
 

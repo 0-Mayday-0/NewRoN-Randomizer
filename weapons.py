@@ -2,6 +2,7 @@ from heritage import *
 from abstracts import *
 from random import choice
 
+
 ###########AMMO###########
 
 class AP(Ammo):
