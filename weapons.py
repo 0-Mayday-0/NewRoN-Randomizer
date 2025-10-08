@@ -95,6 +95,23 @@ class XE_Sight(Optic):
     def __init__(self, name = "XE Sight"):
         super().__init__(name)
 
+class AimPro(Optic):
+    def __init__(self, name = "AIMPRO"):
+        super().__init__(name)
+
+
+class MicroSight(Optic):
+    def __init__(self, name = "Micro Sight"):
+        super().__init__(name)
+
+class SRO(Optic):
+    def __init__(self, name = "SRO"):
+        super().__init__(name)
+
+class EXPS3(Optic):
+    def __init__(self, name = "EXPS3"):
+        super().__init__(name)
+
 ##########!OPTICS##################
 
 ##########MUZZLES##################
@@ -364,9 +381,13 @@ class SMG(Primary):
         super().__init__(name)
 
         self.optic: list[Optic] = [No_Optic(),
-                                   Microt2(),
                                    RMR_Dot(),
-                                   SRO_Dot()]
+                                   SRO_Dot(),
+                                   Microt2(),
+                                   AimPro(),
+                                   C510(),
+                                   Holosight_EXPS3(),
+                                   XE_Sight()]
 
         self.muzzle: list[Muzzle] = [No_Muzzle(),
                                      Tundra_Suppressor(),
@@ -375,8 +396,17 @@ class SMG(Primary):
         self.ammo: list[Ammo] = [AP(),
                                  JHP()]
 
-        self.underbarrel: list[Underbarrel] | None = None
-        self.overbarrel: list[Overbarrel] | None = None
+        self.underbarrel: list[Underbarrel] | None = [No_Underbarrel(),
+                                                      Vertical_Grip(),
+                                                      Angled_Grip(),
+                                                      Combat_Grip(),
+                                                      Side_Angle_Grip()]
+
+        self.overbarrel: list[Overbarrel] | None = [No_Overbarrel(),
+                                                    Laser_Pointer(),
+                                                    M600V_Flashlight(),
+                                                    PEQ_15_IR_Laser()]
+
         self.stock: list[Stock] | None = None
 
     def random_attachments(self) -> list[Attachment]:
