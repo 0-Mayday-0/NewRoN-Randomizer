@@ -59,59 +59,35 @@ class M4_Super_90(Shotgun):
 
 # noinspection PyPep8Naming
 class ARN_18(Assault_Rifle):
-    def __init__(self, name = "ARN-18"):
+    def __init__(self, name = "ARN-180"):
         super().__init__(name)
 
-        self.optic: list[Optic] = [No_Optic(),
-                                   SRS(),
-                                   Holosight_EXPS3(),
-                                   Microt2(),
-                                   M5B(),
-                                   SDR_1_4x()]
+        self.optic.remove(Atak_R_1_12x())
 
-        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
-                                             Mault_IR_Laser(),
-                                             Laser_Pointer(),
-                                             M600V_Flashlight()]
+        self.overbarrel.remove(PEQ_15_IR_Laser())
+        self.overbarrel.append(Mault_IR_Laser())
 
 
 class ARWC(Assault_Rifle):
     def __init__(self, name = "ARWC"):
         super().__init__(name)
 
-        self.optic: list[Optic] = [No_Optic(),
-                                   Holosight_EXPS3(),
-                                   SRS(),
-                                   Microt2(),
-                                   M5B(),
-                                   SDR_1_4x(),
-                                   Atak_R_1_12x()]
 
-# noinspection PyPep8Naming
-class MK1_Carbine(Assault_Rifle):
-    def __init__(self, name = "MK1 Carbine"):
-        super().__init__(name)
 
-        self.optic: list[Optic] = [No_Optic(),
-                                   Holosight_EXPS3(),
-                                   SRS(),
-                                   Microt2(),
-                                   M5B(),
-                                   SDR_1_4x(),
-                                   Atak_R_1_12x()]
-
-        self.underbarrel: list[Underbarrel] = [No_Underbarrel(),
-                                               Vertical_Grip(),
-                                               Combat_Grip()]
 
 class G36C(Assault_Rifle):
     def __init__(self, name = "G36C"):
         super().__init__(name)
 
-        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
-                                             Mault_IR_Laser(),
-                                             Laser_Pointer(),
-                                             M600V_Flashlight()]
+        self.optic: list[Optic] = [RMR_Dot(),
+                                   SRO_Dot(),
+                                   Microt2()]
+
+        self.underbarrel.append(Side_Angle_Grip())
+        self.underbarrel.append(TH_Grip())
+
+        self.overbarrel.remove(PEQ_15_IR_Laser())
+        self.overbarrel.append(Mault_IR_Laser())
 
 
 
@@ -119,56 +95,26 @@ class GA416(Assault_Rifle):
     def __init__(self, name = "GA416"):
         super().__init__(name)
 
-        self.optic: list[Optic] = [No_Optic(),
-                                   Holosight_EXPS3(),
-                                   SRS(),
-                                   Microt2(),
-                                   M5B(),
-                                   SDR_1_4x(),
-                                   Atak_R_1_12x()]
-
-
-class M4A1(Assault_Rifle):
-    def __init__(self, name = "M4A1"):
-        super().__init__(name)
-
-        self.optic: list[Optic] = [No_Optic(),
-                                   Holosight_EXPS3(),
-                                   SRS(),
-                                   Microt2(),
-                                   M5B(),
-                                   SDR_1_4x()]
-
-        self.magazine: list[Magazine] = [Normal_Mag(),
-                                         PMAG_5()]
 
 # noinspection PyPep8Naming
 class SA_58(Assault_Rifle):
-    def __init__(self, name = "SA-58"):
+    def __init__(self, name = "SA-58 OSW"):
         super().__init__(name)
 
-        self.optic: list[Optic] = [No_Optic(),
-                                   Holosight_EXPS3(),
-                                   SRS(),
-                                   Microt2(),
-                                   M5B(),
-                                   SDR_1_4x(),
-                                   Atak_R_1_12x()]
+        self.underbarrel.append(Side_Angle_Grip())
+        self.underbarrel.append(TH_Grip())
+
 
 class MK16(Assault_Rifle):
     def __init__(self, name = "MK16"):
         super().__init__(name)
-        self.optic: list[Optic] = [No_Optic(),
-                                   Holosight_EXPS3(),
-                                   Microt2(),
-                                   M5B(),
-                                   SDR_1_4x(),
-                                   Atak_R_1_12x()]
 
-        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
-                                               M600V_Flashlight(),
-                                               Laser_Pointer(),
-                                               Mault_IR_Laser()]
+        self.underbarrel.append(Side_Angle_Grip())
+        self.underbarrel.append(TH_Grip())
+
+        self.overbarrel.remove(PEQ_15_IR_Laser())
+        self.overbarrel.append(Mault_IR_Laser())
+
 
 class SLR47(Assault_Rifle):
     def __init__(self, name = "SLR47"):
@@ -182,46 +128,30 @@ class SLR47(Assault_Rifle):
         self.muzzle: list[Muzzle] = [No_Muzzle(),
                                      PBS_1_Suppressor()]
 
-        self.underbarrel: list[Underbarrel] = [No_Underbarrel(),
-                                               Combat_Grip(),
-                                               Angled_Grip()]
+        self.underbarrel.remove(Vertical_Grip())
+
+
 # noinspection PyPep8Naming
 class SR_16(Assault_Rifle):
     def __init__(self, name = "SR-16"):
         super().__init__(name)
 
-        self.optic: list[Optic] = [No_Optic(),
-                                   Holosight_EXPS3(),
-                                   SRS(),
-                                   Microt2(),
-                                   M5B(),
-                                   SDR_1_4x(),
-                                   Atak_R_1_12x()]
+
 
 # noinspection PyPep8Naming
 class DM4PDW(Assault_Rifle):
     def __init__(self, name = "DM4PDW"):
         super().__init__(name)
 
-        self.optic: list[Optic] = [No_Optic(),
-                                   SRS(),
-                                   Microt2(),
-                                   M5B(),
-                                   C510(),
-                                   Holosight_EXPS3(),
-                                   XE_Sight(),
-                                   SDR_1_4x()]
+        self.optic.remove(Atak_R_1_12x())
 
-        self.underbarrel: list[Underbarrel] = [No_Underbarrel(),
-                                               Combat_Grip(),
-                                               Vertical_Grip(),
-                                               Angled_Grip(),
-                                               Side_Angle_Grip()]
+        self.muzzle: list[Muzzle] = [No_Muzzle(),
+                                     Socom_Suppressor()]
 
-        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
-                                             Mault_IR_Laser(),
-                                             M600V_Flashlight(),
-                                             Laser_Pointer()]
+        self.underbarrel.append(Side_Angle_Grip())
+
+        self.overbarrel.remove(PEQ_15_IR_Laser())
+        self.overbarrel.append(Mault_IR_Laser())
 
 ##########!ARs##################
 

@@ -10,10 +10,8 @@ class WeaponsPack:
 
         self.ars: list[Assault_Rifle] = [ARN_18(),
                                          ARWC(),
-                                         MK1_Carbine(),
                                          G36C(),
                                          GA416(),
-                                         M4A1(),
                                          SA_58(),
                                          MK16(),
                                          SLR47(),

@@ -245,6 +245,11 @@ class Side_Angle_Grip(Underbarrel):
     def __init__(self, name: str = "Side Angle Grip"):
         super().__init__(name)
 
+# noinspection PyPep8Naming
+class TH_Grip(Underbarrel):
+    def __init__(self, name = "TH-Grip"):
+        super().__init__(name)
+
 ##########!UNDERBARREL##################
 
 ##########MAGAZINE##################
@@ -311,10 +316,14 @@ class Assault_Rifle(Primary):
         super().__init__(name)
 
         self.optic: list[Optic] = [No_Optic(),
-                                   Microt2(),
                                    SRS(),
-                                   RMR_Dot(),
-                                   SRO_Dot()]
+                                   Microt2(),
+                                   M5B(),
+                                   C510(),
+                                   Holosight_EXPS3(),
+                                   XE_Sight(),
+                                   SDR_1_4x(),
+                                   Atak_R_1_12x()]
 
         self.muzzle: list[Muzzle] = [No_Muzzle(),
                                      Socom_Suppressor(),

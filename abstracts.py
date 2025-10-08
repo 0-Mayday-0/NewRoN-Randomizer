@@ -89,6 +89,9 @@ class Attachment(ABC):
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}: {self.name}"
 
+    def __eq__(self, other):
+        return self.name == other.name
+
 class Kevlar(Material):
     def __init__(self, material: str = "Kevlar") -> None:
         super().__init__(material)
