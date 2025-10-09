@@ -64,13 +64,22 @@ class WeaponsPack:
 
         long_tac: Long_Tactical = choice(self.long_tactical)
         headw: Headwear = choice(self.headwear)
+        arm: Armor = choice(self.armor)
 
+        gear_pack: list[Gear | ABC] = [long_tac, headw]
         choice(primaries).pretty_print_attachments()
         print()
         choice(secondaries).pretty_print_attachments()
+        print()
 
-        print(f'\n{re.search(r"(Long_Tactical)", str(long_tac.__class__.__mro__[1])).group().replace('_', ' ')}: {str(long_tac)}')
-        print(f'{re.search(r'(Headwear)', str(headw.__class__.__mro__[1])).group()}: {str(headw)}\n\n')
+        for gear in gear_pack:
+            print(f'{re.search(r"(Long_Tactical)|(Headwear)|(Armor)", str(gear.__class__.__mro__[1]))
+                  .group()
+                  .replace('_', ' ')}: {gear}')
+
+        arm.pretty_print_setup()
+
+
 
 def main() -> None:
     wp = WeaponsPack()
