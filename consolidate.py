@@ -219,33 +219,28 @@ class UMP_45(SMG):
 class Beanbag_Shotgun(Less_Lethal):
     def __init__(self, name="Beanbag Shotgun"):
         super().__init__(name)
+        self.optic: list[Optic] = [No_Optic(),
+                                   RMR_Dot(),
+                                   SRO_Dot(),
+                                   Microt2()]
+
+        self.underbarrel: list[Underbarrel] | None = None
+
+        self.overbarrel.remove(M600V_Flashlight())
+        self.overbarrel.remove(Mault_IR_Laser())
+        self.overbarrel.append(Flashlight())
+
         self.ammo: list[Ammo] = [Beanbag()]
 
 # noinspection PyPep8Naming
-class R7_Launcher(Less_Lethal):
-    def __init__(self, name="R7 Launcher"):
+class VPL_25(Less_Lethal):
+    def __init__(self, name="VPL-25"):
         super().__init__(name)
-
-        self.optic: list[Optic] = [No_Optic(),
-                                   Holosight_EXPS3(),
-                                   Microt2(),
-                                   M5B(),
-                                   SRS()]
-
-        self.underbarrel: list[Underbarrel] = [No_Underbarrel(),
-                                               Vertical_Grip(),
-                                               Combat_Grip(),
-                                               Angled_Grip()]
-
-        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
-                                             M600V_Flashlight(),
-                                             Laser_Pointer(),
-                                             Mault_IR_Laser()]
 
         self.ammo: list[Ammo] = [Pepperball()]
 
-class Taser(Secondary_Less_Lethal):
-    def __init__(self, name="Taser"):
+class TRPL(Secondary_Less_Lethal):
+    def __init__(self, name="TRPL"):
         super().__init__(name)
 
 ##########!LESSLETHAL##################
@@ -309,7 +304,7 @@ class USP45(Pistol):
 ##########!PISTOLS#################
 
 def main():
-    MPX().pretty_print_attachments()
+    TRPL().pretty_print_attachments()
     Anti_Stab_Vest().pretty_print_setup()
 
 if __name__ == '__main__':

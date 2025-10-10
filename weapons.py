@@ -432,19 +432,28 @@ class Less_Lethal(Primary):
         super().__init__(name)
 
         self.optic: list[Optic] = [No_Optic(),
-                                   RMR_Dot(),
-                                   SRO_Dot(),
-                                   Microt2()]
+                                   SRS(),
+                                   M5B(),
+                                   Microt2(),
+                                   C510(),
+                                   Holosight_EXPS3(),
+                                   XE_Sight()]
+
+        self.underbarrel: list[Underbarrel] | None = [No_Underbarrel(),
+                                                      Vertical_Grip(),
+                                                      Angled_Grip(),
+                                                      Combat_Grip()]
 
         self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
+                                             M600V_Flashlight(),
                                              Laser_Pointer(),
-                                             Flashlight()]
+                                             Mault_IR_Laser()]
 
 
 
         self.ammo: list[Ammo] | None = None
 
-        self.underbarrel: list[Underbarrel] | None = None
+
 
     def random_attachments(self) -> list[Attachment]:
         pack: list[list[Attachment | Ammo]] = [self.optic,
@@ -462,7 +471,7 @@ class Secondary_Less_Lethal(Secondary):
     def __init__(self, name):
         super().__init__(name)
 
-        self.ammo: list[Ammo] = [Taser_Cartridge()]
+        self.ammo: list[Ammo] = [Pepperball()]
 
     def random_attachments(self) -> list[Ammo]:
         pack: list[list[Ammo]] = [self.ammo]
