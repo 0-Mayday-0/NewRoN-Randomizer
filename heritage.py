@@ -65,7 +65,7 @@ class Secondary(Gun):
         print(f'{str(self)}:\n')
 
         for i in chosen:
-            print(f'{re.search(pattern, str(i.__class__.__mro__[1])).group()}: {i}')
+            print(f'{re.search(pattern, str(i.__class__.__mro__[1])).group().replace("Overbarrel", "Underbarrel")}: {i}')
 
 class Armor(Gear):
     def __init__(self, name: str) -> None:

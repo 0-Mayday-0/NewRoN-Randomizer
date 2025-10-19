@@ -304,7 +304,7 @@ class USP45(Pistol):
 ##########!PISTOLS#################
 
 def main():
-    TRPL().pretty_print_attachments()
+    USP45().pretty_print_attachments()
     Anti_Stab_Vest().pretty_print_setup()
 
 if __name__ == '__main__':
