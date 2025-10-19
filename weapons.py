@@ -487,9 +487,9 @@ class Pistol(Secondary):
                                           SRO_Dot(),
                                           RMR_Dot()]
 
-        self.muzzle: list[Muzzle] = [No_Muzzle(),
-                                     Compensator(),
-                                     Large_Suppressor()]
+        self.muzzle: list[Muzzle] | None = [No_Muzzle(),
+                                            Compensator(),
+                                            Large_Suppressor()]
 
         self.overbarrel: list[Overbarrel] | None = [No_Overbarrel(),
                                                     Flashlight(),
@@ -500,11 +500,13 @@ class Pistol(Secondary):
                                  JHP()]
 
     def random_attachments(self) -> list[Attachment]:
-        pack: list[list[Attachment | Ammo]] = [self.overbarrel,
-                                               self.muzzle]
+        pack: deque[list[Attachment | Ammo]] = deque([self.overbarrel])
 
         if self.optic:
-            pack.append(self.optic)
+            pack.appendleft(self.optic)
+
+        if self.muzzle:
+            pack.append(self.muzzle)
 
         pack.append(self.ammo)
 
