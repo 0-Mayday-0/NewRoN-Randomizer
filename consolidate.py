@@ -386,10 +386,45 @@ class USP45(Pistol):
                                      Suppressor(),
                                      Obsidian_Supressor()]
 
+# noinspection PyPep8Naming
+class Sig_509(Pistol):
+    def __init__(self, name="509"):
+        super().__init__(name)
+
+        self.muzzle.remove(XF_brake())
+
+# noinspection PyPep8Naming
+class M11_Compact(Pistol):
+    def __init__(self, name="M11 Compact"):
+        super().__init__(name)
+
+        self.muzzle: list[Muzzle] | None = None
+
+# noinspection PyPep8Naming
+class MK_V(Pistol):
+    def __init__(self, name="MK-V"):
+        super().__init__(name)
+
+        self.optic: list[Optic] | None = None
+        self.muzzle: list[Muzzle] | None = None
+
+        self.overbarrel.remove(Flashlight())
+        self.overbarrel.remove(IR_Laser())
+        self.overbarrel.append(Custom_Laser())
+
+# noinspection PyPep8Naming
+class TLE_1911(Pistol):
+    def __init__(self, name="TLE 1911"):
+        super().__init__(name)
+
+        self.muzzle: list[Muzzle] | None = None
+
+        self.overbarrel.remove(IR_Laser())
+
 ##########!PISTOLS#################
 
 def main():
-    USP45().pretty_print_attachments()
+    TLE_1911().pretty_print_attachments()
     Anti_Stab_Vest().pretty_print_setup()
 
 if __name__ == '__main__':

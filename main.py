@@ -38,7 +38,11 @@ class WeaponsPack:
                                       USG_57(),
                                       M45A1(),
                                       G19(),
-                                      USP45()]
+                                      USP45(),
+                                      Sig_509(),
+                                      M11_Compact(),
+                                      MK_V(),
+                                      TLE_1911()]
 
         self.secondary_ll: list[Secondary_Less_Lethal] = [TRPL()]
 

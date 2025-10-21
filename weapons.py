@@ -247,6 +247,12 @@ class WM_Light(Overbarrel):
     def __init__(self, name = "WM Light"):
         super().__init__(name)
 
+# noinspection PyPep8Naming
+class Custom_Laser(Overbarrel):
+    def __init__(self, name = "Custom Laser"):
+        super().__init__(name)
+
+
 ##########!OVERBARREL##################
 
 ##########UNDERBARREL##################
