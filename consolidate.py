@@ -138,6 +138,92 @@ class DM4PDW(Assault_Rifle):
         self.overbarrel.remove(PEQ_15_IR_Laser())
         self.overbarrel.append(Mault_IR_Laser())
 
+class F90(Assault_Rifle):
+    def __init__(self, name = "F90"):
+        super().__init__(name)
+
+        self.underbarrel.remove(Angled_Grip())
+        self.underbarrel.append(Side_Angle_Grip())
+
+        self.overbarrel.append(Mault_IR_Laser())
+
+class G3A3(Assault_Rifle):
+    def __init__(self, name = "G3A3"):
+        super().__init__(name)
+
+        self.muzzle.remove(Socom_Suppressor())
+        self.muzzle.append(Tundra_Suppressor())
+
+        self.underbarrel.append(Side_Angle_Grip())
+        self.underbarrel.append(TH_Grip())
+
+class GA51(Assault_Rifle):
+    def __init__(self, name = "GA51"):
+        super().__init__(name)
+
+        self.optic.remove(SDR_1_4x())
+        self.optic.remove(Atak_R_1_12x())
+        self.optic.append(RMR_Dot())
+        self.optic.append(SRO_Dot())
+
+        self.muzzle.remove(Socom_Suppressor())
+        self.muzzle.append(Tundra_Suppressor())
+
+        self.underbarrel.append(Side_Angle_Grip())
+        self.underbarrel.append(TH_Grip())
+
+class LVAR(Assault_Rifle):
+    def __init__(self, name = "LVAR"):
+        super().__init__(name)
+
+        self.muzzle = None
+
+        self.underbarrel.append(Side_Angle_Grip())
+
+        self.overbarrel.append(Mault_IR_Laser())
+        self.overbarrel.append(WM_Light())
+
+# noinspection PyPep8Naming
+class M14S_16(Assault_Rifle):
+    def __init__(self, name = "M14S-16"):
+        super().__init__(name)
+
+        self.underbarrel = None
+
+        self.optic.append(AimPro())
+
+        self.muzzle.remove(ASR_Brake())
+        self.muzzle.remove(SFMB_Brake())
+
+class MCX(Assault_Rifle):
+    def __init__(self, name = "MCX"):
+        super().__init__(name)
+
+        self.underbarrel.append(Side_Angle_Grip())
+        self.underbarrel.append(TH_Grip())
+
+        self.overbarrel.remove(PEQ_15_IR_Laser())
+        self.overbarrel.append(Mault_IR_Laser())
+        self.overbarrel.append(WM_Light())
+
+class MK17(Assault_Rifle):
+    def __init__(self, name = "MK17"):
+        super().__init__(name)
+
+        self.underbarrel.append(Side_Angle_Grip())
+        self.underbarrel.append(TH_Grip())
+
+        self.overbarrel.append(PEQ_15_IR_Laser())
+
+class MK18(Assault_Rifle):
+    def __init__(self, name = "MK18"):
+        super().__init__(name)
+
+        self.optic.remove(Atak_R_1_12x())
+
+        self.underbarrel.append(Side_Angle_Grip())
+        self.underbarrel.append(TH_Grip())
+
 ##########!ARs##################
 
 ##########SMGs##################
@@ -304,7 +390,7 @@ class USP45(Pistol):
 ##########!PISTOLS#################
 
 def main():
-    USP45().pretty_print_attachments()
+    VPL_25().pretty_print_attachments()
     Anti_Stab_Vest().pretty_print_setup()
 
 if __name__ == '__main__':

@@ -14,7 +14,14 @@ class WeaponsPack:
                                          MK16(),
                                          SLR47(),
                                          SR_16(),
-                                         DM4PDW()]
+                                         DM4PDW(),
+                                         F90(),
+                                         G3A3(),
+                                         GA51(),
+                                         LVAR(),
+                                         MCX(),
+                                         MK17(),
+                                         MK18()]
 
         self.smgs: list[SMG] = [MP5_10mm(),
                                 MP5A3(),

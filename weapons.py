@@ -233,6 +233,11 @@ class Flashlight(Overbarrel):
     def __init__(self, name = "Flashlight"):
         super().__init__(name)
 
+# noinspection PyPep8Naming
+class WM_Light(Overbarrel):
+    def __init__(self, name = "WM Light"):
+        super().__init__(name)
+
 ##########!OVERBARREL##################
 
 ##########UNDERBARREL##################
@@ -342,15 +347,15 @@ class Assault_Rifle(Primary):
                                    SDR_1_4x(),
                                    Atak_R_1_12x()]
 
-        self.muzzle: list[Muzzle] = [No_Muzzle(),
-                                     Socom_Suppressor(),
-                                     ASR_Brake(),
-                                     SFMB_Brake()]
+        self.muzzle: list[Muzzle] | None = [No_Muzzle(),
+                                            Socom_Suppressor(),
+                                            ASR_Brake(),
+                                            SFMB_Brake()]
 
-        self.underbarrel: list[Underbarrel] = [No_Underbarrel(),
-                                               Vertical_Grip(),
-                                               Angled_Grip(),
-                                               Combat_Grip()]
+        self.underbarrel: list[Underbarrel] | None = [No_Underbarrel(),
+                                                      Vertical_Grip(),
+                                                      Angled_Grip(),
+                                                      Combat_Grip()]
 
         self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
                                              Laser_Pointer(),
@@ -364,13 +369,17 @@ class Assault_Rifle(Primary):
 
     def random_attachments(self) -> list[Attachment]:
         pack: list[list[Attachment | Ammo]] = [self.optic,
-                                               self.muzzle,
-                                               self.underbarrel,
                                                self.overbarrel,
                                                self.ammo]
 
         if self.magazine:
             pack.append(self.magazine)
+
+        if self.muzzle:
+            pack.insert(1, self.muzzle)
+
+        if self.underbarrel:
+            pack.insert(2, self.underbarrel)
 
         return [choice(i) for i in pack]
 
@@ -460,7 +469,7 @@ class Less_Lethal(Primary):
                                                self.overbarrel]
 
         if self.underbarrel:
-            pack.append(self.underbarrel)
+            pack.insert(1 ,self.underbarrel)
 
         pack.append(self.ammo)
 
