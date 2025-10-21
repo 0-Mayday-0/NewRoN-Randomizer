@@ -188,6 +188,15 @@ class Large_Suppressor(Muzzle):
     def __init__(self, name = "Large Suppressor"):
         super().__init__(name)
 
+# noinspection PyPep8Naming
+class GM_Supressor(Muzzle):
+    def __init__(self, name = "GM Suppressor"):
+        super().__init__(name)
+
+# noinspection PyPep8Naming
+class Obsidian_Supressor(Muzzle):
+    def __init__(self, name = "Obsidian Suppressor"):
+        super().__init__(name)
 ##########!MUZZLES##################
 
 
@@ -480,11 +489,20 @@ class Secondary_Less_Lethal(Secondary):
     def __init__(self, name):
         super().__init__(name)
 
+        self.overbarrel: list[Overbarrel] | None = [No_Overbarrel(),
+                                                    Laser_Pointer(),
+                                                    Flashlight(),
+                                                    IR_Laser()]
+
         self.ammo: list[Ammo] = [Pepperball()]
 
     def random_attachments(self) -> list[Ammo]:
-        pack: list[list[Ammo]] = [self.ammo]
+        pack: list[list[Ammo | Attachment]] = []
 
+        if self.overbarrel:
+            pack.append(self.overbarrel)
+
+        pack.append(self.ammo)
 
         return [choice(i) for i in pack]
 
@@ -497,8 +515,8 @@ class Pistol(Secondary):
                                           RMR_Dot()]
 
         self.muzzle: list[Muzzle] | None = [No_Muzzle(),
-                                            Compensator(),
-                                            Large_Suppressor()]
+                                            XF_brake(),
+                                            GM_Supressor()]
 
         self.overbarrel: list[Overbarrel] | None = [No_Overbarrel(),
                                                     Flashlight(),
@@ -509,13 +527,13 @@ class Pistol(Secondary):
                                  JHP()]
 
     def random_attachments(self) -> list[Attachment]:
-        pack: deque[list[Attachment | Ammo]] = deque([self.overbarrel])
+        pack: list[list[Attachment | Ammo]] = [self.overbarrel]
 
         if self.optic:
-            pack.appendleft(self.optic)
+            pack.insert(0, self.optic)
 
         if self.muzzle:
-            pack.append(self.muzzle)
+            pack.insert(1, self.muzzle)
 
         pack.append(self.ammo)
 

@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 from random import choice
-from collections import deque
 
 class Throwable(ABC):
     def __init__(self, name: str):

@@ -33,14 +33,14 @@ class WeaponsPack:
         self.primary_ll: list[Less_Lethal] = [Beanbag_Shotgun(),
                                               VPL_25()]
 
-        self.pistols: list[Pistol] = [P92X(),
+        self.pistols: list[Pistol] = [B92X(),
                                       Magnum357(),
                                       USG_57(),
                                       M45A1(),
-                                      PC19(),
+                                      G19(),
                                       USP45()]
 
-        #self.secondary_ll: list[Secondary_Less_Lethal] = []
+        self.secondary_ll: list[Secondary_Less_Lethal] = [TRPL()]
 
         self.armor: list[Armor] = [Anti_Stab_Vest(),
                                    Light_Armor(),
@@ -65,7 +65,7 @@ class WeaponsPack:
     def randomize(self) -> None:
         primaries: list[Primary | Less_Lethal] = self.shotguns+self.ars+self.smgs+self.primary_ll
 
-        secondaries: list[Secondary | Secondary_Less_Lethal] = self.pistols#+self.secondary_ll
+        secondaries: list[Secondary | Secondary_Less_Lethal] = self.pistols+self.secondary_ll
 
         long_tac: Long_Tactical = choice(self.long_tactical)
         headw: Headwear = choice(self.headwear)
@@ -83,6 +83,7 @@ class WeaponsPack:
                   .replace('_', ' ')}: {gear}')
 
         arm.pretty_print_setup()
+        print('-'*10)
 
 
 
