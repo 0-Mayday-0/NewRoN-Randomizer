@@ -326,7 +326,10 @@ class Shotgun(Primary):
         self.optic: list[Optic] = [No_Optic(),
                                    SRO_Dot(),
                                    RMR_Dot(),
-                                   Microt2()]
+                                   Microt2(),
+                                   Holosight_EXPS3(),
+                                   C510(),
+                                   XE_Sight()]
 
         self.muzzle: list[Muzzle] = [No_Muzzle(),
                                      GA12_Brake(),

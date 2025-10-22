@@ -28,13 +28,39 @@ class B1301(Shotgun):
     def __init__(self, name = "B1301"):
         super().__init__(name)
 
+        self.optic.remove(Holosight_EXPS3())
+        self.optic.remove(C510())
+        self.optic.remove(XE_Sight())
+
 # noinspection PyPep8Naming
 class CQB_870(Shotgun):
     def __init__(self, name = "870 CQB"):
         super().__init__(name)
-        self.overbarrel: list[Overbarrel] = [No_Overbarrel(),
-                                             Integrated_Flashlight(),
-                                             Laser_Pointer()]
+
+        self.optic.remove(Holosight_EXPS3())
+        self.optic.remove(C510())
+        self.optic.remove(XE_Sight())
+
+        self.overbarrel.remove(M600V_Flashlight())
+        self.overbarrel.append(Integrated_Flashlight())
+
+
+class M590(Shotgun):
+    def __init__(self, name = "590M"):
+        super().__init__(name)
+
+
+class M1014(Shotgun):
+    def __init__(self, name = "M1014"):
+        super().__init__(name)
+
+        self.optic: list[Optic] = [No_Optic(),
+                                   SRO_Dot(),
+                                   RMR_Dot()]
+
+class Supernova(Shotgun):
+    def __init__(self, name = "Supernova"):
+        super().__init__(name)
 
 
 
@@ -424,7 +450,7 @@ class TLE_1911(Pistol):
 ##########!PISTOLS#################
 
 def main():
-    TLE_1911().pretty_print_attachments()
+    Supernova().pretty_print_attachments()
     Anti_Stab_Vest().pretty_print_setup()
 
 if __name__ == '__main__':

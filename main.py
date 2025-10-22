@@ -4,7 +4,10 @@ from tactical import *
 class WeaponsPack:
     def __init__(self) -> None:
         self.shotguns: list[Shotgun] = [B1301(),
-                                        CQB_870()]
+                                        CQB_870(),
+                                        M590(),
+                                        M1014(),
+                                        Supernova()]
 
         self.ars: list[Assault_Rifle] = [ARN_18(),
                                          ARWC(),
