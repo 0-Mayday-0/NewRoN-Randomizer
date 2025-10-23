@@ -112,6 +112,11 @@ class EXPS3(Optic):
     def __init__(self, name = "EXPS3"):
         super().__init__(name)
 
+# noinspection PyPep8Naming
+class MP7_Pistol_Sights(Optic):
+    def __init__(self, name="MP7 Pistol Sights"):
+        super().__init__(name)
+
 ##########!OPTICS##################
 
 ##########MUZZLES##################
@@ -196,6 +201,11 @@ class GM_Supressor(Muzzle):
 # noinspection PyPep8Naming
 class Obsidian_Supressor(Muzzle):
     def __init__(self, name = "Obsidian Suppressor"):
+        super().__init__(name)
+
+# noinspection PyPep8Naming
+class MP7_Suppressor(Muzzle):
+    def __init__(self, name = "MP7 Suppressor"):
         super().__init__(name)
 ##########!MUZZLES##################
 
@@ -416,12 +426,10 @@ class SMG(Primary):
                                    Holosight_EXPS3(),
                                    XE_Sight()]
 
-        self.muzzle: list[Muzzle] = [No_Muzzle(),
-                                     Tundra_Suppressor(),
-                                     Harvester_Suppressor()]
+        self.muzzle: list[Muzzle] | None = [No_Muzzle(),
+                                            Tundra_Suppressor(),
+                                            Harvester_Suppressor()]
 
-        self.ammo: list[Ammo] = [AP(),
-                                 JHP()]
 
         self.underbarrel: list[Underbarrel] | None = [No_Underbarrel(),
                                                       Vertical_Grip(),
@@ -434,17 +442,23 @@ class SMG(Primary):
                                                     M600V_Flashlight(),
                                                     PEQ_15_IR_Laser()]
 
+        self.ammo: list[Ammo] = [AP(),
+                                 JHP()]
+
         self.stock: list[Stock] | None = None
 
     def random_attachments(self) -> list[Attachment]:
-        pack: list[list[Attachment | Ammo]] = [self.optic,
-                                               self.muzzle]
+        pack: list[list[Attachment | Ammo]] = [self.optic]
+
 
         if self.underbarrel:
-            pack.append(self.underbarrel)
+            pack.insert(1, self.underbarrel)
 
         if self.overbarrel:
-            pack.append(self.overbarrel)
+            pack.insert(2, self.overbarrel)
+
+        if self.muzzle:
+            pack.insert(1, self.muzzle)
 
         if self.stock:
             pack.append(self.stock)

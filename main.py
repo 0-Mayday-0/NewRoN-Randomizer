@@ -31,7 +31,12 @@ class WeaponsPack:
                                 MP5A2(),
                                 MP9(),
                                 MPX(),
-                                UMP_45()]
+                                UMP_45(),
+                                MP5SD6(),
+                                MP7(),
+                                P90,
+                                Raider_X_P320(),
+                                SPC9()]
 
         self.primary_ll: list[Less_Lethal] = [Beanbag_Shotgun(),
                                               VPL_25()]

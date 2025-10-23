@@ -323,6 +323,87 @@ class UMP_45(SMG):
         self.muzzle: list[Muzzle] = [No_Muzzle(),
                                      Suppressor()]
 
+class MP5SD6(SMG):
+    def __init__(self, name = "MP5SD6"):
+        super().__init__(name)
+
+        self.underbarrel: list[Underbarrel] | None = None
+
+        self.muzzle: list[Muzzle] | None = None
+
+        self.overbarrel: list[Overbarrel] | None = [No_Overbarrel(),
+                                                    Flashlight()]
+
+
+class MP7(SMG):
+    def __init__(self, name = "MP7"):
+        super().__init__(name)
+
+        self.optic.append(MP7_Pistol_Sights())
+        self.optic.append(SRS())
+
+        self.muzzle: list[Muzzle] | None = [No_Muzzle(),
+                                            MP7_Suppressor()]
+
+        self.overbarrel.remove(M600V_Flashlight())
+
+        self.overbarrel.append(WM_Light())
+        self.overbarrel.append(Mault_IR_Laser())
+
+class P90(SMG):
+    def __init__(self, name = "P90"):
+        super().__init__(name)
+
+        self.underbarrel: list[Underbarrel] | None = None
+
+        self.optic.append(SRS())
+
+        self.overbarrel.remove(M600V_Flashlight())
+
+        self.overbarrel.append(WM_Light())
+
+# noinspection PyPep8Naming
+class Raider_X_P320(SMG):
+    def __init__(self, name = "Raider X P320"):
+        super().__init__(name)
+
+        self.underbarrel: list[Underbarrel] | None = None
+
+        del self.optic[4:]
+
+        self.muzzle: list[Muzzle] | None = [No_Muzzle(),
+                                            GM_Supressor(),
+                                            Compensator()]
+
+        del self.overbarrel[2:]
+
+        self.overbarrel.append(WM_Light())
+        self.overbarrel.append(IR_Laser())
+
+class SPC9(SMG):
+    def __init__(self, name = "SPC9"):
+        super().__init__(name)
+
+        self.optic.remove(AimPro())
+
+        self.muzzle.remove(Harvester_Suppressor())
+        self.muzzle.append(GM_Supressor())
+
+        self.overbarrel.remove(PEQ_15_IR_Laser())
+        self.overbarrel.append(Mault_IR_Laser())
+
+# noinspection PyPep8Naming
+class UMP_9(SMG):
+    def __init__(self, name = "UMP-9"):
+        super().__init__(name)
+
+        self.optic.remove(RMR_Dot())
+
+        self.optic.append(SRS())
+
+        self.muzzle: list[Muzzle] | None = [No_Muzzle(),
+                                            Suppressor()]
+
 ##########!SMGs##################
 
 ##########LESSLETHAL##################
@@ -350,6 +431,16 @@ class VPL_25(Less_Lethal):
         super().__init__(name)
 
         self.ammo: list[Ammo] = [Pepperball()]
+
+class TPL(Less_Lethal):
+    def __init__(self, name="TPL"):
+        super().__init__(name)
+
+        self.ammo: list[Ammo] = [Pepperball()]
+
+        self.optic.remove(SRS())
+
+        self.optic.append(SRO_Dot())
 
 class TRPL(Secondary_Less_Lethal):
     def __init__(self, name="TRPL"):
@@ -450,7 +541,7 @@ class TLE_1911(Pistol):
 ##########!PISTOLS#################
 
 def main():
-    Supernova().pretty_print_attachments()
+    TPL().pretty_print_attachments()
     Anti_Stab_Vest().pretty_print_setup()
 
 if __name__ == '__main__':
