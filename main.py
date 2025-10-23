@@ -34,7 +34,7 @@ class WeaponsPack:
                                 UMP_45(),
                                 MP5SD6(),
                                 MP7(),
-                                P90,
+                                P90(),
                                 Raider_X_P320(),
                                 SPC9()]
 
